@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from testeHellWbService WSDL service -->
+
+  <service name="testeHellWb" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://testewb.com.br"/>
+      <parameter name="wsdlServiceElement" value="testeHellWbService"/>
+      <parameter name="schemaQualified" value="http://testewb.com.br"/>
+      <parameter name="wsdlServicePort" value="testeHellWb"/>
+      <parameter name="className" value="br.com.testewb.testeHellWb"/>
+      <parameter name="wsdlPortType" value="testeHellWb"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:retNS="http://testewb.com.br" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="subtracao" qname="subtracao" returnQName="retNS:subtracaoReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://testewb.com.br" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:n1" type="tns:int"/>
+        <parameter xmlns:pns="http://testewb.com.br" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:n2" type="tns:int"/>
+      </operation>
+      <operation xmlns:retNS="http://testewb.com.br" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="divisao" qname="divisao" returnQName="retNS:divisaoReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://testewb.com.br" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:n3" type="tns:int"/>
+        <parameter xmlns:pns="http://testewb.com.br" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:n4" type="tns:int"/>
+      </operation>
+      <operation xmlns:retNS="http://testewb.com.br" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="multiplicacao" qname="multiplicacao" returnQName="retNS:multiplicacaoReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://testewb.com.br" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:n5" type="tns:int"/>
+        <parameter xmlns:pns="http://testewb.com.br" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:n6" type="tns:int"/>
+      </operation>
+      <operation xmlns:retNS="http://testewb.com.br" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="soma" qname="soma" returnQName="retNS:somaReturn" returnType="rtns:int" soapAction="">
+        <parameter xmlns:pns="http://testewb.com.br" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:n7" type="tns:int"/>
+        <parameter xmlns:pns="http://testewb.com.br" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:n8" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="divisao soma subtracao multiplicacao"/>
+
+  </service>
+</deployment>
